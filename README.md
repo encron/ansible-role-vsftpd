@@ -29,7 +29,7 @@ vsftpd_shares:
   - name: readonlyshare
 ```
 Because of the default settings of the other variables, this will create a share with only read access for registered users.  
-To further define permissions and group ownership, you'll have to specify the variables directory_mode and group, as shown in the example below:
+To further define permissions and group ownership, you'll have to specify the variables directory_mode and group, as shown in this example:
 
 ```Yaml
 vsftpd_shares:
