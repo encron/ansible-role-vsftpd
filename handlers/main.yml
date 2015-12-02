@@ -1,4 +1,4 @@
-# roles/vsftpd/handlers/main.yml
+# vsftpd/handlers/main.yml
 
 
 - name: restart firewalld

@@ -1,10 +1,12 @@
-# roles/vsftpd/tasks/main.yml
+# vsftpd/tasks/main.yml
 
 - name: Install packages
   yum:
     pkg: "{{ item }}"
     state: present
-  with_items: vsftpd_packages
+  with_items: 
+    - vsftpd
+    - ftp
   
 - name: Allow FTP service through firewall
   firewalld: service=ftp permanent=true state=enabled
@@ -42,14 +44,5 @@
     state: started
     enabled: yes  
 
-    
- # - name: Create link to shares in each user's home directory
-   # file:
-     # state: link
-     # path: "/home/{{ item[0] }}/{{ item[1].name }}"
-     # src: "{{ vsftpd_shares_root }}/{{ item[1].name }}"
-   # with_nested: 
-     # - vsftpd_users
-     # - vsftpd_shares
     
   
