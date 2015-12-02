@@ -1,0 +1,15 @@
+# vsftpd/meta/main.yml
+---
+galaxy_info:
+  author: Toon Lamberigts <toon.lamberigts@gmail.com>
+  description: Installs and configures vsftpd on CentOS/RHEL 7.
+  license: MIT
+  min_ansible_version: 1.9
+  platforms:
+  - name: EL
+    versions:
+      - 7
+  categories:
+  - networking
+  - system
+dependencies: []
