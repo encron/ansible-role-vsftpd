@@ -1,4 +1,4 @@
-# roles/vsftpd/tasks/main.yml
+# vsftpd/tasks/main.yml
 
 - name: Install packages
   yum:
