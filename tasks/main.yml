@@ -4,7 +4,9 @@
   yum:
     pkg: "{{ item }}"
     state: present
-  with_items: vsftpd_packages
+  with_items: 
+    - vsftpd
+    - ftp
   
 - name: Allow FTP service through firewall
   firewalld: service=ftp permanent=true state=enabled
