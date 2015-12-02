@@ -1,25 +1,5 @@
 # roles/vsfptd/vars/main.yml
 
 vsftpd_shares_root: '/srv/shares'
-vsftpd_packages: 
-  - vsftpd
-  - ftp
 vsftpd_shares:
-  - name: directie
-    group: staf
-    directory_mode: u=rwx,g=rwx,o=rx
-  - name: financieringen
-    group: financieringen
-    directory_mode: u=rwx,g=rwx,o=rx
-  - name: staf
-    group: staf
-    directory_mode: u=rwx,g=rwx,o=rx
-  - name: verzekeringen
-    group: verzekeringen
-    directory_mode: u=rwx,g=rwx,o=rx
-  - name: publiek
-    group: users
-    directory_mode: u=rwx,g=rwx,o=rwx
-  - name: beheer
-    group: beheer
-    directory_mode: u=rwx,g=rwx,o-rwx
+
