@@ -1,0 +1,55 @@
+# roles/vsftpd/tasks/main.yml
+
+- name: Install packages
+  yum:
+    pkg: "{{ item }}"
+    state: present
+  with_items: vsftpd_packages
+  
+- name: Allow FTP service through firewall
+  firewalld: service=ftp permanent=true state=enabled
+  notify: restart firewalld
+  
+- name: Make sure SELinux boolean settings are correct
+  seboolean:
+    name: "{{ item }}"
+    state: yes
+    persistent: yes
+  with_items:
+    - ftp_home_dir
+    - ftpd_full_access
+    
+- name: Configure vsftpd
+  template:   
+    src: vsftpd.conf.j2 
+    dest: /etc/vsftpd/vsftpd.conf 
+    mode: 0755 
+    backup: yes
+  
+- name: Make shared directories for FTP
+  with_items: vsftpd_shares
+  file:
+    state: directory
+    path: "{{ vsftpd_shares_root}}/{{ item.name }}"
+    owner: root
+    group: "{{ item.group|default('users') }}"
+    mode: "{{ item.directory_mode|default('0775') }}"
+  when: vsftpd_shares is defined
+  
+- name: Start and ensure the vsftpd service starts at boot
+  service:
+    name: vsftpd
+    state: started
+    enabled: yes  
+
+    
+ # - name: Create link to shares in each user's home directory
+   # file:
+     # state: link
+     # path: "/home/{{ item[0] }}/{{ item[1].name }}"
+     # src: "{{ vsftpd_shares_root }}/{{ item[1].name }}"
+   # with_nested: 
+     # - vsftpd_users
+     # - vsftpd_shares
+    
+  
