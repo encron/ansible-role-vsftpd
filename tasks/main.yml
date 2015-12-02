@@ -43,13 +43,4 @@
     enabled: yes  
 
     
- # - name: Create link to shares in each user's home directory
-   # file:
-     # state: link
-     # path: "/home/{{ item[0] }}/{{ item[1].name }}"
-     # src: "{{ vsftpd_shares_root }}/{{ item[1].name }}"
-   # with_nested: 
-     # - vsftpd_users
-     # - vsftpd_shares
-    
   
