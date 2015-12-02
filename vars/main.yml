@@ -1,4 +1,4 @@
-# roles/vsfptd/vars/main.yml
+# vsfptd/vars/main.yml
 
 vsftpd_shares_root: '/srv/shares'
 vsftpd_shares:
