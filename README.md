@@ -9,7 +9,7 @@ An Ansible role for installing and configuring vsftpd on CentOS/RHEL 7.
 
 ## Role Variables
 
-`vars/main.yml`
+`defaults/main.yml`
 
 | Name           | Default Value | Description                        |
 | -------------- | ------------- | -----------------------------------|
@@ -36,6 +36,21 @@ vsftpd_shares:
   - name: exampleshare
     group: pirates
     directory_mode: u=rwx,g=rwx,o=rwx
+```
+
+## Example playbook
+
+```Yaml
+- hosts: all
+  sudo: yes
+  roles:
+    - encron.vsftpd
+  vars:
+    vsftpd_shares_root: '/ftp/shares'
+    vsftpd_shares:
+      - name: exampleshare
+        group: pirates
+        directory_mode: u=rwx,g=rwx,o=rwx
 ```
 
 ## License

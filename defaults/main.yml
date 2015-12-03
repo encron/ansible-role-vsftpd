@@ -1,4 +1,4 @@
-# vsfptd/vars/main.yml
+# vsfptd/defaults/main.yml
 
 vsftpd_shares_root: '/srv/shares'
 vsftpd_shares: []
