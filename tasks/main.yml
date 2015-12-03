@@ -39,7 +39,7 @@
     comment: "{{ item.comment }}"
     shell: "{{ item.shell| default('/bin/bash') }}"
     createhome: "{{ item.create_homedir }}"
-    groups: "{{ item.groups | join(,) }}"
+    groups: "{{ item.groups | join(',') }}"
     password: "{{ item.password| password_hash('sha512') }}"
   with_items: vsftpd_users
   when: vsftpd_users is defined
