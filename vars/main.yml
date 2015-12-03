@@ -1,5 +1,5 @@
 # vsfptd/vars/main.yml
 
 vsftpd_shares_root: '/srv/shares'
-vsftpd_shares:
+vsftpd_shares: []
 
