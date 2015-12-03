@@ -27,6 +27,23 @@
     dest: /etc/vsftpd/vsftpd.conf 
     mode: 0755 
     backup: yes
+    
+- name: Create the groups
+  group: name="{{item}}"
+  with_items: vsftpd_groups
+  when: vsftpd_groups is defined
+  
+- name: Create the users
+  user:
+    name: "{{ item.username }}"
+    comment: "{{ item.comment }}"
+    shell: "{{ item.shell| default('/bin/bash') }}"
+    createhome: "{{ item.create_homedir }}"
+    groups: "{{ item.groups | join(,) }}"
+    password: "{{ item.password| password_hash('sha512') }}"
+  with_items: vsftpd_users
+  when: vsftpd_users is defined
+
   
 - name: Make shared directories for FTP
   with_items: vsftpd_shares

@@ -2,4 +2,5 @@
 
 vsftpd_shares_root: '/srv/shares'
 vsftpd_shares: []
-
+vsftpd_users: []
+vsftpd_groups: []
