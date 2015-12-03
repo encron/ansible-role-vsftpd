@@ -35,7 +35,6 @@ vsftpd_users:
     comment: 'A test user'
     groups:
       - pirates
-      - test
     password: 'testpassword'
     shell: /sbin/nologin
     create_homedir: yes
@@ -80,13 +79,11 @@ vsftpd_shares:
         directory_mode: u=rwx,g=rwx,o=rwx
     vsftpd_groups: 
       - pirates
-      - test
     vsftpd_users:
       - username: testuser
         comment: 'A test user'
         groups:
           - pirates
-          - test
         password: 'testpassword'
         shell: /sbin/nologin
         create_homedir: yes
